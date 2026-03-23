@@ -61,5 +61,7 @@ flowchart LR
     F --> G[Multi-Head Attention]
     G --> H[Feed Forward Network]
     H --> I[Output Logits]
-    I --> J[Sampling (Top-K / Temperature)]
+    I --> J[Sampling TopK Temperature]
     J --> K[Generated Text]
+
+    
