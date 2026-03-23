@@ -49,19 +49,24 @@ Text → Tokenizer → Embedding → Multi-Head Attention → Transformer Blocks
 
 ---
 
-### 📊 Architecture Diagram (Mermaid)
+## 📊 Architecture Diagram (Mermaid)
 
 ```mermaid
-flowchart LR
-    A[Raw Text] --> B[Tokenizer]
-    B --> C[Token IDs]
-    C --> D[Embedding Layer]
-    D --> E[Positional Encoding]
-    E --> F[Transformer Blocks]
-    F --> G[Multi-Head Attention]
-    G --> H[Feed Forward Network]
-    H --> I[Output Logits]
-    I --> J[Sampling TopK Temperature]
-    J --> K[Generated Text]
+flowchart TD
 
+    subgraph Input
+        A[Raw Text] --> B[Tokenizer] --> C[Token IDs]
+    end
+
+    subgraph Embedding
+        C --> D[Embedding Layer] --> E[Positional Encoding]
+    end
+
+    subgraph Transformer
+        E --> F[Transformer Blocks] --> G[Multi-Head Attention] --> H[Feed Forward Network]
+    end
+
+    subgraph Output
+        H --> I[Output Logits] --> J[Sampling] --> K[Generated Text]
+    end
     
