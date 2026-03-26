@@ -1,6 +1,8 @@
 import torch
 import torch.nn as nn
 
+from usta_self_attention import UstaSelfAttention
+
 def get_rotary_position_encoding(input: torch.Tensor, base=10000, device="cpu"):
   context_length, dimension = input.shape
 
@@ -41,10 +43,12 @@ class UstaModel(nn.Module):
         # it is just for educational purposes
         self.pos_embedding = nn.Embedding(context_length, embedding_dim)
         self.get_pos = get_rotary_position_encoding
+        self.self_attention=UstaSelfAttention(embedding_dim, embedding_dim)
 
     def forward(self, x):
         x = self.embedding(x) # dictionary meaning of the tokens (words)
         x = self.get_pos(x) # meaning of the tokens in the sentence according to their position
+        x = self.self_attention(x)
         return x
       
       
