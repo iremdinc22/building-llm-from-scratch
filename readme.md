@@ -1,4 +1,4 @@
-# 🧠 Building LLM from Scratch
+# 🧠 LLM from Scratch
 
 This project is an end-to-end implementation of a GPT-style Large Language Model built entirely from scratch.  
 The goal is to deeply understand how modern LLMs work by implementing every core component manually, from tokenization to text generation.
