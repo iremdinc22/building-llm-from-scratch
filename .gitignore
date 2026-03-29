@@ -4,6 +4,7 @@
 # Python
 __pycache__/
 *.pyc
+.python-version
 
 # Environments
 .env
@@ -18,3 +19,5 @@ data/
 
 # Experiments / local demos
 usta-llm-demo/
+
+
