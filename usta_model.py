@@ -44,13 +44,14 @@ class UstaModel(nn.Module):
         # it is just for educational purposes
         self.pos_embedding = nn.Embedding(context_length, embedding_dim)
         self.get_pos = get_rotary_position_encoding
-        self.layers = nn.ModuleList([UstaDecoderBlock(embedding_dim, num_heads, context_length) for _ in range(num_layers)])
+        self.layers = nn.Sequential(*[UstaDecoderBlock(embedding_dim, num_heads, context_length) for _ in range(num_layers)])
+        self.head = nn.Linear(embedding_dim, vocab_size)
 
     def forward(self, x):
         x = self.embedding(x)  # dictionary meaning of the tokens (words)
         x = self.get_pos(x)  # meaning of the tokens in the sentence according to their position
-        for layer in self.layers:
-            x = layer(x)
+        x = self.layers(x)
+        x = self.head(x)
         return x
       
       
