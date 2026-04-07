@@ -17,11 +17,13 @@ class UstaModel(nn.Module):
     self.lm_head = nn.Linear(embedding_dim, vocab_size)
 
 
-    def forward(self, x):
-        x = self.embedding(x)  # dictionary meaning of the tokens (words)
-        x = self.layers(x)
-        x = self.lm_head(x)
-        return x
+  def forward(self, x):
+      x = self.embedding(x)  # dictionary meaning of the tokens (words)
+      x = self.layers(x)
+      x = self.lm_head(x)
+      return x
+    
+    
       
       
       
