@@ -1,8 +1,8 @@
 import torch
 import torch.nn as nn
 
-from .usta_decoder_block import UstaDecoderBlock
-from .usta_embedding import UstaEmbedding
+from usta_decoder_block import UstaDecoderBlock
+from usta_embedding import UstaEmbedding
 
 
 class UstaModel(nn.Module):
